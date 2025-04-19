@@ -25,3 +25,6 @@ dist-ssr
 
 # Coverage reports
 coverage
+
+# Test result folders
+__screenshots__
