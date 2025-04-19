@@ -1,11 +1,15 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import 'uikit/dist/css/uikit.css';
-import "uikit/dist/js/uikit.min.js";
 import App from './App.tsx'
+import { Provider } from 'react-redux'
+import { setupStore } from './redux/store.ts'
+
+const store = setupStore()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <Provider store={store}>      
+      <App />
+    </Provider>
   </StrictMode>,
 )
