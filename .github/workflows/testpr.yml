@@ -25,6 +25,7 @@ jobs:
       run: yarn install && yarn playwright install chromium
     - name: 'Test frontend'
       working-directory: ./packages/frontend
+      run: yarn coverage
     - name: 'Report Coverage'
       # Set if: always() to also generate the report if tests are failing
       # Only works if you set `reportOnFailure: true` in your vite config as specified above
