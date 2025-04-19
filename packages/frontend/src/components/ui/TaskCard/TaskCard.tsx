@@ -3,7 +3,7 @@ import { Button, Card, CardContent, Typography } from "@mui/material"
 import {PropsWithChildren} from 'react';
 import TaskType from "../../../types/Task"
 import { useDispatch } from "react-redux";
-import { removeTask } from "../../../redux/taskSlice";
+import { removeTask } from "../../../app/taskSlice";
 
 export function TaskCard({...props}:PropsWithChildren<TaskType>) {
 
