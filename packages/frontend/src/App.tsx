@@ -9,8 +9,7 @@ import { NavBar } from './components/ui/NavBar/NavBar';
 function App() {
   const tasks:TaskType[] = useSelector((state : RootState) => state.tasks)
 
-  console.log(tasks)
-  const taskItems = tasks.map(task => <TaskCard {...task}/>)
+  const taskItems = tasks.map(task => <TaskCard key={task.uuid} {...task}/>)
 
   return (
     <Box>
