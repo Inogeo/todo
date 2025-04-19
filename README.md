@@ -1,11 +1,14 @@
+[![codecov](https://codecov.io/github/Inogeo/todo/branch/main/graph/badge.svg?token=80LNS629RT)](https://codecov.io/github/Inogeo/todo)
+
 # TODO App
 
-[![codecov](https://codecov.io/github/Inogeo/todo/branch/main/graph/badge.svg?token=80LNS629RT)](https://codecov.io/github/Inogeo/todo)
+This app is a demo app to show up my programming skills.
 
 # Start in development
 
 ## Backend App
 
+The backend hasn't been developped yet... Please hang on !
 
 ## Frontend App
 
