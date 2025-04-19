@@ -18,9 +18,10 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./packages/frontend
-        run: yarn install
+        run: yarn install && yarn playwright install chromium
 
       - name: Run tests
+        working-directory: ./packages/frontend
         run: yarn coverage
 
       - name: Upload results to Codecov
