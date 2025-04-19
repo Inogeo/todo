@@ -1,30 +1,38 @@
-import { NavBar } from "./components/ui/NavBar/NavBar"
-import { NewTaskModal } from "./components/ui/NewTaskCard/NewTaskModal"
-import { TaskCard } from "./components/ui/TaskCard/TaskCard"
-
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import { NewTaskModal } from './components/ui/NewTaskModal/NewTaskModal';
+import { useSelector } from 'react-redux';
+import TaskType from './types/Task';
+import { TaskCard } from './components/ui/TaskCard/TaskCard';
+import { RootState } from './redux/store';
 
 function App() {
-  const new_task_modal_id = "new_task_modal"
+  const tasks:TaskType[] = useSelector((state : RootState) => state.tasks)
+
+  console.log(tasks)
+  const taskItems = tasks.map(task => <TaskCard {...task}/>)
+
   return (
-    <div className='uk-width-1-1'>
-      <NavBar label='TODO Example App'/>
-      
-      <div className="uk-padding-small">
-        <button className="uk-button uk-button-primary uk-margin-small-right" type="button" uk-toggle={`target: #${new_task_modal_id}`}>Create new task</button>
-        <NewTaskModal modal_id={new_task_modal_id}></NewTaskModal>
-        <div className="uk-grid-small uk-child-width-expand@s" data-uk-grid>
-          <div className="uk-width-1-2">
-            <TaskCard title="Example task 1" description="Content of task" done={false}></TaskCard>
-          </div>
-          <div className="uk-width-1-2">
-          <TaskCard title="Example task 1" description="Content of task" done={true}></TaskCard>
-          </div>
-        </div>
-        <div className='uk-grid-large' data-uk-grid>
-        </div>
-      </div>
-    </div>
-  )
+    <Box>
+      <Box>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              TODO app
+            </Typography>
+          </Toolbar>
+        </AppBar>
+      </Box>
+      <Box sx={{ m: 2 }}>
+        <NewTaskModal></NewTaskModal>
+      </Box>
+      <Box sx={{ m: 2 }}>
+        {taskItems}
+      </Box>
+    </Box>
+  );
 }
 
 export default App
