@@ -24,13 +24,7 @@ jobs:
       run: yarn install
     - name: 'Test frontend'
       working-directory: ./packages/frontend
-      run: yarn vitest --coverage.enabled true
-    - name: 'Report Coverage'
-      working-directory: ./packages/frontend
-      # Set if: always() to also generate the report if tests are failing
-      # Only works if you set `reportOnFailure: true` in your vite config as specified above
-      if: always() 
-      uses:  davelosert/vitest-coverage-report-action@v2
+      run: yarn coverage
     - uses: googleapis/release-please-action@v4
       with:
         release-type: simple
