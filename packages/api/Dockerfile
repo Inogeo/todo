@@ -23,4 +23,4 @@ EXPOSE 8000
 USER nonroot
 
 # Startup command
-CMD ["fastapi", "run", "src/api/main.py", "--port", "8000", "--workers", "4"]
+CMD ["fastapi", "run", "src/api/main.py", "--port", "8000", "--workers", "4", "--root-path", "/api/v1"]
