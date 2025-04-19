@@ -1,4 +1,5 @@
 import { ComponentProps } from "react";
+import { AppBar, Toolbar, Typography } from "@mui/material";
 
 type NavBarProps =
   ComponentProps<"input"> & {
@@ -7,14 +8,12 @@ type NavBarProps =
 
 export function NavBar({...props}:NavBarProps) {
   return (
-    <nav className="uk-navbar-container">
-        <div className="uk-container">
-            <div data-uk-navbar>
-                <div className="uk-navbar-left">
-                    <a className="uk-navbar-item uk-logo" href="#">{props.label}</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          {props.label}
+        </Typography>
+      </Toolbar>
+    </AppBar>
   )
 }

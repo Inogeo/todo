@@ -42,9 +42,6 @@ export function NewTaskModal() {
       dispatch(addTask(newTask))
       setOpen(false)
     }
-    else {
-      alert("error")
-    }
   }
 
   return (
