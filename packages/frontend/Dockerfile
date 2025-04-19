@@ -1,17 +1,11 @@
-FROM bitnami/node:latest
-
-# Add non root user
-RUN adduser --disabled-password --gecos "" nonroot && \
-    echo 'nonroot ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
-
-# Set user nonroot
-USER nonroot
+# Image used for development purpose
+FROM bitnami/node:latest as dev
 
 # Set working directory
 WORKDIR /app
 
 # Copy file to directory
-COPY --chown=nonroot:nonroot . .
+COPY . .
 
 # Install dependencies
 RUN yarn install
@@ -20,3 +14,12 @@ RUN yarn install
 EXPOSE 5173
 
 CMD ["yarn", "dev", "--host"]
+
+
+# Image used to build sources
+FROM dev AS build
+RUN yarn build
+
+# Image used to serve static frontend app
+FROM bitnami/nginx:latest AS production
+COPY --from=build /app/dist /app

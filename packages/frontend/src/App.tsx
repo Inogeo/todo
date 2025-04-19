@@ -3,7 +3,7 @@ import { NewTaskModal } from './components/ui/NewTaskModal/NewTaskModal';
 import { useSelector } from 'react-redux';
 import TaskType from './types/Task';
 import { TaskCard } from './components/ui/TaskCard/TaskCard';
-import { RootState } from './redux/store';
+import { RootState } from './app/store';
 import { NavBar } from './components/ui/NavBar/NavBar';
 
 function App() {

@@ -5,7 +5,7 @@ import { TextField, TextFieldProps } from "@mui/material";
 import Modal from '@mui/material/Modal';
 import { useRef } from "react";
 import { useDispatch } from 'react-redux';
-import { addTask } from "../../../redux/taskSlice";
+import { addTask } from "../../../app/taskSlice";
 import TaskType from "../../../types/Task";
 import { v4 as uuidv4 } from 'uuid';
 
