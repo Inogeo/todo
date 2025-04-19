@@ -3,11 +3,14 @@ name = "api"
 version = "0.1.0"
 description = ""
 authors = [
-    {name = "p.hardy",email = "pierre.hardy@egis-group.com"}
+    {name = "p.hardy",email = "pierre.hardy5@gmail.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.10,<4.0"
 dependencies = [
+    "fastapi[standard] (>=0.115.12,<0.116.0)",
+    "poetry-plugin-export (>=1.9.0,<2.0.0)",
+    "sqlmodel (>=0.0.24,<0.0.25)"
 ]
 
 [tool.poetry]

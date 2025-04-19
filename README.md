@@ -8,7 +8,23 @@ This app is a demo app to show up my programming skills.
 
 ## Backend App
 
-The backend hasn't been developped yet... Please hang on !
+To start backend API server, use the following commands:
+
+```sh
+# Go into package folder
+cd package/api
+
+# Start virtual env
+eval $(poetry env activate)
+
+# install dependencies
+poetry install
+
+# run server
+cd src/api
+poetry start
+
+```
 
 ## Frontend App
 
