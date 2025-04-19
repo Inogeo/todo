@@ -1,12 +1,10 @@
-import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import { NewTaskModal } from './components/ui/NewTaskModal/NewTaskModal';
 import { useSelector } from 'react-redux';
 import TaskType from './types/Task';
 import { TaskCard } from './components/ui/TaskCard/TaskCard';
 import { RootState } from './redux/store';
+import { NavBar } from './components/ui/NavBar/NavBar';
 
 function App() {
   const tasks:TaskType[] = useSelector((state : RootState) => state.tasks)
@@ -17,13 +15,7 @@ function App() {
   return (
     <Box>
       <Box>
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              TODO app
-            </Typography>
-          </Toolbar>
-        </AppBar>
+        <NavBar label='TODO Démo App'></NavBar>
       </Box>
       <Box sx={{ m: 2 }}>
         <NewTaskModal></NewTaskModal>

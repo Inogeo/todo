@@ -1,8 +1,10 @@
 import { expect, test } from 'vitest'
-import { render } from 'vitest-browser-react'
 import { NewTaskModal } from './NewTaskModal'
+import { setupStore } from '../../../redux/store'
+import { renderWithProviders } from '../../../utils/test-utils'
 
 test('Rendering NewTaskModal', async () => {
-  const { getByText } = render(<NewTaskModal modal_id="test_modal" />)
-  await expect.element(getByText("Save")).toBeInTheDocument()
+  const store = setupStore()
+  const { getByText } = renderWithProviders(<NewTaskModal/>)
+  await expect.element(getByText("Add a new task")).toBeInTheDocument()
 })
