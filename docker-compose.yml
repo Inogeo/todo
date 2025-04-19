@@ -1,0 +1,7 @@
+services:
+  frontend:
+    build: ./packages/frontend
+    volumes:
+      - ./packages/frontend:/app
+    ports:
+      - 5173:5173
