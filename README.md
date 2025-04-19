@@ -1,3 +1,7 @@
+# TODO App
+
+[![codecov](https://codecov.io/github/Inogeo/todo/branch/main/graph/badge.svg?token=80LNS629RT)](https://codecov.io/github/Inogeo/todo)
+
 # Start in development
 
 ## Backend App
