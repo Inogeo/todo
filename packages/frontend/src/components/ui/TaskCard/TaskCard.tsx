@@ -1,5 +1,4 @@
 import { ComponentProps } from "react";
-import { useState } from "react";
 
 type TaskCardProps = ComponentProps<"input"> & {
     title: string;
