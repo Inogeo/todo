@@ -3,6 +3,7 @@ import TaskType from '../types/Task'
 
 const initialState: TaskType[] = [];
 
+
 export const taskSlice = createSlice({
   name: 'tasks',
   initialState,
@@ -10,10 +11,13 @@ export const taskSlice = createSlice({
     addTask: (state, action:PayloadAction<TaskType>) => {
       state.push(action.payload)
     },
+    removeTask: (state, action:PayloadAction<string>) => {
+      return state.filter(function(item){return item.uuid != action.payload})
+    },
   }
 })
 
-// Action creators are generated for each case reducer function
-export const { addTask } = taskSlice.actions
+
+export const { addTask, removeTask } = taskSlice.actions
 
 export default taskSlice.reducer  

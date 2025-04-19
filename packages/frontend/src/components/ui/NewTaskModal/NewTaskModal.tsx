@@ -7,7 +7,7 @@ import { useRef } from "react";
 import { useDispatch } from 'react-redux';
 import { addTask } from "../../../redux/taskSlice";
 import TaskType from "../../../types/Task";
-
+import { v4 as uuidv4 } from 'uuid';
 
 const style = {
   position: 'absolute',
@@ -35,6 +35,7 @@ export function NewTaskModal() {
   function handleSave(){
     if(taskDescription.current != null && taskTitle.current != null){
       const newTask:TaskType = {
+        uuid: uuidv4(),
         title: String(taskTitle.current.value),
         description: String(taskDescription.current.value),
         done: false,
