@@ -6,7 +6,13 @@ export default defineConfig({
   test: {
     browser: {
       enabled: true,
+      headless: true,
       provider: 'playwright',
+      coverage: {
+        provider: 'istanbul',
+        reportsDirectory: './coverage',
+        reporter: ['cobertura'], // specify XML format (cobertura) only
+      },
       instances: [
         { browser: 'chromium' },
       ],

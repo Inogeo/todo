@@ -28,6 +28,6 @@ Once started, application can be reached at [http://localhost:5173](http://local
 ### Run tests
 
 ```sh
-# Open browser and run tests
-yarn vitest
+# Open browser and show up vitest report
+yarn vitest --ui
 ```

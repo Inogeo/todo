@@ -1,0 +1,36 @@
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  issues: write
+  contents: write
+  pull-requests: write
+
+name: release
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: 'Install Node'
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+    - name: 'Install Deps'
+      working-directory: ./packages/frontend
+      run: yarn install
+    - name: 'Test frontend'
+      working-directory: ./packages/frontend
+      run: yarn vitest --coverage.enabled true
+    - name: 'Report Coverage'
+      working-directory: ./packages/frontend
+      # Set if: always() to also generate the report if tests are failing
+      # Only works if you set `reportOnFailure: true` in your vite config as specified above
+      if: always() 
+      uses:  davelosert/vitest-coverage-report-action@v2
+    - uses: googleapis/release-please-action@v4
+      with:
+        release-type: simple
