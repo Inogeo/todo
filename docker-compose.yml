@@ -5,3 +5,12 @@ services:
       - ./packages/frontend:/app
     ports:
       - 5173:5173
+
+  api:
+    build: ./packages/api
+    volumes:
+      - ./packages/api:/app
+      - ./data:/data
+    ports:
+      - 8000:8000
+
