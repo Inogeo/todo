@@ -3,18 +3,22 @@ FROM bitnami/python:latest
 # Enable logging in console
 ENV PYTHONUNBUFFERED=1
 
-# Add non root user
+# Prepare rootless user
 RUN adduser --disabled-password --gecos "" nonroot && \
     echo 'nonroot ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 # Set working directory
 WORKDIR /app
 
-# Copy file to directory
+# Copy whole sources
 COPY --chown=nonroot:nonroot . .
 
-# Install dependency
-RUN pip install .
+# Install dependency with buildkit cache
+RUN --mount=type=cache,target=/root/.cache/pip pip install .
+
+# Create data dir used by SQLite DB
+RUN mkdir -p /data 
+RUN chown -R nonroot:nonroot /data
 
 # Expose port
 EXPOSE 8000

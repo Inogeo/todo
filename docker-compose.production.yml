@@ -1,0 +1,31 @@
+services:
+  frontend:
+    image: todo_frontend_prod
+    build:
+      context: ./packages/frontend
+      target: production
+    volumes:
+      - ./packages/rpx/frontend_server_block.conf:/opt/bitnami/nginx/conf/server_blocks/frontend_server_block.conf:ro
+    ports:
+      - 8001:80
+
+  api:
+    image: todo_api
+    build: ./packages/api
+    volumes:
+      - db-data:/data
+  
+  rpx:
+    image: bitnami/nginx:latest
+    environment:
+      - NGINX_ENABLE_STREAM=yes
+    volumes:
+      - ./packages/rpx/rpxprod_stream_server_block.conf:/opt/bitnami/nginx/conf/server_blocks/rpxprod_stream_server_block.conf:ro
+    ports:
+      - 8000:80
+    depends_on:
+      - api
+      - frontend
+
+volumes:
+  db-data:
