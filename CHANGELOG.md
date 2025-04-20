@@ -1,5 +1,43 @@
 # Changelog
 
+## [1.1.0](https://github.com/Inogeo/todo/compare/v1.0.0...v1.1.0) (2025-04-20)
+
+
+### Features
+
+* add backend api ([05eae88](https://github.com/Inogeo/todo/commit/05eae887676f3288c14837dd1fd26ba8737e8968))
+* added backend api and production grade docker image ([ef69142](https://github.com/Inogeo/todo/commit/ef691424e30ca0e354fa1fabd45d4c494ace057b))
+* added code coverage report to every PR ([a803b55](https://github.com/Inogeo/todo/commit/a803b559c0d53d03ffee727780f69f53a5296eb9))
+* added coverage reports ([6a553ee](https://github.com/Inogeo/todo/commit/6a553eef1bd33c9d66df889e7a6ead3f52d11087))
+* added fully operational docker files with cache ([d39040d](https://github.com/Inogeo/todo/commit/d39040d87258627736097df28db07c47c1e258b3))
+* added link to check the swagger ([7696b9b](https://github.com/Inogeo/todo/commit/7696b9bcb151144d793252fcf04e1f2b4ad75ed2))
+* added release-please action ([7cbb237](https://github.com/Inogeo/todo/commit/7cbb237beeadeefa37e3b8f64d75c395a39cb735))
+* added testing steps in release pipeline ([4f1791d](https://github.com/Inogeo/todo/commit/4f1791d0dcfd976561923f989647394f8034d0c3))
+* Card component for task display ([18e62e1](https://github.com/Inogeo/todo/commit/18e62e1e8402e13f6076f309279b1ee3f0ae5a9a))
+* first stable production backend and frontend docker containers ([4cf3de1](https://github.com/Inogeo/todo/commit/4cf3de17428649d795ee51758754657db251567a))
+* first stable todolist ([6819a39](https://github.com/Inogeo/todo/commit/6819a39900fe1ef697af3d77d00dafad5d92639c))
+* improved development setup procedure and docker-compose files ([be5ed73](https://github.com/Inogeo/todo/commit/be5ed73ec36844b8cda408281156134e399ff019))
+* improved dockerfile to operate as non-root user ([1695dba](https://github.com/Inogeo/todo/commit/1695dbaa5279c6f5f8f8e07f1b502d5e13c9f649))
+* improved dockerfile to operate as non-root user ([f53bba1](https://github.com/Inogeo/todo/commit/f53bba11e55fa9f70f87173cbd67e4c66f999773))
+* initial commit with frontend app and testing operational ([79b07c8](https://github.com/Inogeo/todo/commit/79b07c8356ceb69132f9dcd77213f64692cea417))
+* Modal for new task creation ([18e62e1](https://github.com/Inogeo/todo/commit/18e62e1e8402e13f6076f309279b1ee3f0ae5a9a))
+* Modal for new task creation and card component for task display ([45796b0](https://github.com/Inogeo/todo/commit/45796b085fd26a1a511f2f3350ea00de853a4c13))
+* redux store now operationnal ([b06b566](https://github.com/Inogeo/todo/commit/b06b5666792825c735ffbfe9aded2761363e6538))
+* removed double docker compose file to set up a unique production ready docker compose ([c0b5f18](https://github.com/Inogeo/todo/commit/c0b5f1864e720c1ed576c24061507e647b37291d))
+
+
+### Bug Fixes
+
+* added chromium install so that test can be ran ([bdd9a12](https://github.com/Inogeo/todo/commit/bdd9a12336393185d7e30f034b66bb4f434df8c6))
+* broken testing files ([33b12fa](https://github.com/Inogeo/todo/commit/33b12fa8b5959387fd46aec44345f23e14f93e5c))
+* enable coverage report ([696e762](https://github.com/Inogeo/todo/commit/696e7621f034b173080314df05f0a0c43fa3a327))
+* improved CICD for frontend testing ([653c703](https://github.com/Inogeo/todo/commit/653c70398d828706215e13748edbeb7ad5c9f075))
+* minor fix on previous code ([c6248ac](https://github.com/Inogeo/todo/commit/c6248ac5b05c0152208bda3928e913b6b1989293))
+* missing run in PR test workflow ([80aa674](https://github.com/Inogeo/todo/commit/80aa674625123227c947fbff06321b11d31333ad))
+* missing working dir ([1768fc4](https://github.com/Inogeo/todo/commit/1768fc4d42f122e5835b65ea78f0d23f02dbd6f5))
+* Naming of Release workflow ([85402c8](https://github.com/Inogeo/todo/commit/85402c851b431f4aaf5dc3f890ee7b9c1504172f))
+* removed unused files ([911ab4c](https://github.com/Inogeo/todo/commit/911ab4c1df38b75b33b4caeb500cdbde90413464))
+
 ## 1.0.0 (2025-04-20)
 
 
