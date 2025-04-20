@@ -15,7 +15,7 @@ function App() {
   return (
     <Box>
       <Box>
-        <NavBar label='TODO Démo App'></NavBar>
+        <NavBar label='TODO App'></NavBar>
       </Box>
       <Box sx={{ m: 2 }}>
         <Button variant="outlined"><Link href="/api/v1/docs">Check the Swagger</Link></Button>

@@ -1,20 +1,28 @@
 # Image used for development purpose
-FROM bitnami/node:latest as dev
+FROM bitnami/node:latest AS dev
 
 # Set working directory
 WORKDIR /app
 
-# Copy file to directory
-COPY . .
+# Copy package.json
+COPY yarn.lock package.json ./
+COPY yarn.lock yarn.lock
 
-# Install dependencies
-RUN yarn install
+# Install dependencies with buildkit cache
+RUN --mount=type=cache,target=/root/.yarn YARN_CACHE_FOLDER=/root/.yarn yarn install
+
+# Install playwright dependencies required for testing
+RUN yarn playwright install-deps
+RUN yarn run playwright install chromium
+
+# Copy whole sources
+COPY . .
 
 # Expose port
 EXPOSE 5173
 
-CMD ["yarn", "dev", "--host"]
-
+# Command to run in development
+CMD ["yarn", "dev"]
 
 # Image used to build sources
 FROM dev AS build

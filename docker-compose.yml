@@ -1,26 +1,35 @@
 services:
   frontend:
+    image: todo_frontend_dev
+    container_name: todo_frontend
     build:
       context: ./packages/frontend
-      target: production
+      target: dev
     volumes:
-      - ./packages/rpx/frontend_server_block.conf:/opt/bitnami/nginx/conf/server_blocks/frontend_server_block.conf:ro
+      - ./packages/frontend:/app
     ports:
-      - 8001:80
+      - 5173:5173
 
   api:
+    image: todo_api
+    container_name: todo_api
+    command: ["fastapi", "dev", "src/api/main.py", "--port", "8000", "--root-path", "/api/v1", "--host", "0.0.0.0"]
     build: ./packages/api
     volumes:
-      - ./data:/data
+      - db-data:/data
+      - ./packages/api:/app
   
   rpx:
     image: bitnami/nginx:latest
     environment:
       - NGINX_ENABLE_STREAM=yes
     volumes:
-      - ./packages/rpx/todo_stream_server_block.conf:/opt/bitnami/nginx/conf/server_blocks/todo_stream_server_block.conf:ro
+      - ./packages/rpx/rpxdev_stream_server_block.conf:/opt/bitnami/nginx/conf/server_blocks/rpxdev_stream_server_block.conf:ro
     ports:
       - 8000:80
     depends_on:
       - api
       - frontend
+
+volumes:
+  db-data:
