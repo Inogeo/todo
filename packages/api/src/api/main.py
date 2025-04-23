@@ -8,7 +8,7 @@ app = FastAPI(
 )
 
 # Include routes to apps
-app.include_router(todo.router, prefix="/todo", tags=["Todo Items"])
+app.include_router(todo.router, prefix="/todos", tags=["Todo Items"])
 
 # Root URL declaration used as an healthcheck 
 @app.get("/")
