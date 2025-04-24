@@ -1,0 +1,34 @@
+name: Run tests and upload coverage - Backend
+
+on: 
+  push
+
+jobs:
+  test:
+    name: Run tests and collect coverage on backend app
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+      
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+
+      - name: Install dependencies
+        working-directory: ./packages/api
+        run: poetry install
+
+      - name: Run tests
+        working-directory: ./packages/api
+        run: poetry run pytest
+
+      - name: Upload results to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}

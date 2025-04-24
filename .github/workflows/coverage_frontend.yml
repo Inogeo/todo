@@ -1,11 +1,11 @@
-name: Run tests and upload coverage
+name: Run tests and upload coverage - Frontend
 
 on: 
   push
 
 jobs:
   test:
-    name: Run tests and collect coverage
+    name: Run tests and collect coverage on frontend app
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,4 +27,5 @@ jobs:
       - name: Upload results to Codecov
         uses: codecov/codecov-action@v5
         with:
+          fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
