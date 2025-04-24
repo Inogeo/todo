@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.2.0](https://github.com/Inogeo/todo/compare/v1.1.0...v1.2.0) (2025-04-24)
+
+
+### Features
+
+* added coverage report generation on backend ([87a3877](https://github.com/Inogeo/todo/commit/87a3877e5d2b531f5cc3705ca79cf86574326127))
+* added frontend build to CICD ([0445848](https://github.com/Inogeo/todo/commit/0445848ba7a432af2c6937e0def15f231b97a565))
+* added ruff code formating and linting to cicd ([bf8a75c](https://github.com/Inogeo/todo/commit/bf8a75c09d91ea3318cdb5473e3c252ea061533a))
+* added testing on backend ([8d3ad21](https://github.com/Inogeo/todo/commit/8d3ad21d4287b1d5ccef2c34eec94cad40fc0802))
+* improved frontend readability ([dec2562](https://github.com/Inogeo/todo/commit/dec25621c905dfb4ca8acd34e12dd58dd77169c0))
+* improved frontend readability ([03606ab](https://github.com/Inogeo/todo/commit/03606ab6cc708d09d511054601ca44d96ab44c30))
+
+
+### Bug Fixes
+
+* adjusted test to rely on a in memory database ([3d06bb6](https://github.com/Inogeo/todo/commit/3d06bb619c9e8568a88720af19229ac7e30c5327))
+* broken test on AppNavBar ([b32a698](https://github.com/Inogeo/todo/commit/b32a69831d247aa45b4798263b086e84aa159ba3))
+* improve frontend coverage ([7a8e91e](https://github.com/Inogeo/todo/commit/7a8e91efe75924da2ab3298dcb602cfcbab8ad5d))
+* ruff linting and formating ([8cbb6f3](https://github.com/Inogeo/todo/commit/8cbb6f39735dc8f1c26ce93f7e6787d214fd97b1))
+
 ## [1.1.0](https://github.com/Inogeo/todo/compare/v1.0.0...v1.1.0) (2025-04-20)
 
 
