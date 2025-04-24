@@ -5,5 +5,5 @@ import "@vitest/browser/matchers";
 
 test('Rendering NewTaskModal', async () => {
   const { getByText } = renderWithProviders(<NewTaskModal/>)
-  await expect.element(getByText("Add a new task")).toBeInTheDocument()
+  await expect.element(getByText("Add a to-do item")).toBeInTheDocument()
 })
