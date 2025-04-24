@@ -14,7 +14,7 @@ export function TaskCard({...props}:PropsWithChildren<TaskType>) {
   }
 
   return (
-    <Card sx={{ minWidth: 275 , m: 2}}>
+    <Card sx={{ minWidth: 275}}>
       <CardContent>
         <Typography variant="h4" gutterBottom>
           {props.title}
