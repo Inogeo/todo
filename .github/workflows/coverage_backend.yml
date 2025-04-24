@@ -24,12 +24,15 @@ jobs:
         run: poetry install
       
       - name: Install the code linting and formatting tool Ruff
+        working-directory: ./packages/api
         run: pipx install ruff
 
       - name: Lint code with Ruff
+        working-directory: ./packages/api
         run: ruff check --output-format=github --target-version=py39
-        
+
       - name: Check code formatting with Ruff
+        working-directory: ./packages/api
         run: ruff format --diff --target-version=py39
         continue-on-error: true
 

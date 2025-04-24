@@ -1,4 +1,4 @@
-import pytest  
+import pytest
 from fastapi.testclient import TestClient
 from sqlmodel import Session, SQLModel, create_engine
 from sqlmodel.pool import StaticPool
@@ -6,9 +6,10 @@ from sqlmodel.pool import StaticPool
 from .main import app
 from .database import get_session
 
+
 # In memory db used for tests
-@pytest.fixture(name="session")  
-def session_fixture():  
+@pytest.fixture(name="session")
+def session_fixture():
     engine = create_engine(
         "sqlite://", connect_args={"check_same_thread": False}, poolclass=StaticPool
     )
@@ -16,16 +17,18 @@ def session_fixture():
     with Session(engine) as session:
         yield session
 
-@pytest.fixture(name="client")  
-def client_fixture(session: Session):  
-    def get_session_override():  
+
+@pytest.fixture(name="client")
+def client_fixture(session: Session):
+    def get_session_override():
         return session
 
-    app.dependency_overrides[get_session] = get_session_override  
+    app.dependency_overrides[get_session] = get_session_override
 
-    client = TestClient(app)  
-    yield client  
+    client = TestClient(app)
+    yield client
     app.dependency_overrides.clear()
+
 
 def test_heathcheck(client: TestClient):
     """Test healthcheck endpoint."""

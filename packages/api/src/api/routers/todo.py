@@ -3,18 +3,19 @@ from typing import Annotated
 from api.database import SessionDep
 from api.todo.models import TodoItem
 from fastapi import APIRouter, HTTPException, Query
-from fastapi.encoders import jsonable_encoder
 from sqlmodel import select
 
 router = APIRouter()
 
-@router.post('/')
+
+@router.post("/")
 def create_todo_item(todo_item: TodoItem, session: SessionDep = SessionDep) -> TodoItem:
     """This API endopints create TodoItem instances."""
     session.add(todo_item)
     session.commit()
     session.refresh(todo_item)
     return todo_item
+
 
 @router.get("/")
 def list_todo_items(
@@ -26,8 +27,11 @@ def list_todo_items(
     todo_items = session.exec(select(TodoItem).offset(offset).limit(limit)).all()
     return todo_items
 
+
 @router.put("/{todo_item_id}")
-def update_todo_item(todo_item_id: str, todo_item_update: TodoItem, session: SessionDep = SessionDep) -> TodoItem:
+def update_todo_item(
+    todo_item_id: str, todo_item_update: TodoItem, session: SessionDep = SessionDep
+) -> TodoItem:
     """This API endopints update a single TodoItem instance."""
     # Get object to update
     todo_item = session.get(TodoItem, todo_item_id)
@@ -39,6 +43,7 @@ def update_todo_item(todo_item_id: str, todo_item_update: TodoItem, session: Ses
 
     return todo_item
 
+
 @router.get("/{todo_item_id}")
 def read_todo_item(todo_item_id: str, session: SessionDep = SessionDep) -> TodoItem:
     """This API endopints retrive a single TodoItem instance."""
@@ -47,6 +52,7 @@ def read_todo_item(todo_item_id: str, session: SessionDep = SessionDep) -> TodoI
         raise HTTPException(status_code=404, detail="TodoItem not found")
     return todo_item
 
+
 @router.delete("/{todo_item_id}")
 def delete_todo_item(todo_item_id: str, session: SessionDep = SessionDep) -> TodoItem:
     """This API endopints retrive a single TodoItem instance."""
@@ -54,7 +60,7 @@ def delete_todo_item(todo_item_id: str, session: SessionDep = SessionDep) -> Tod
     # If item not found, raise 404
     if not todo_item:
         raise HTTPException(status_code=404, detail="TodoItem not found")
-    
+
     # Delete item
     session.delete(todo_item)
     session.commit()

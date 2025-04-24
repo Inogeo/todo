@@ -10,7 +10,8 @@ app = FastAPI(
 # Include routes to apps
 app.include_router(todo.router, prefix="/todos", tags=["Todo Items"])
 
-# Root URL declaration used as an healthcheck 
+
+# Root URL declaration used as an healthcheck
 @app.get("/")
 async def healthcheck():
     """Root URL used as healthcheck.
