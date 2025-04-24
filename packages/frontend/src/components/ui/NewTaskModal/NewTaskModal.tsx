@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { addTask } from "../../../app/taskSlice";
 import TaskType from "../../../types/Task";
 import { v4 as uuidv4 } from 'uuid';
+import { Add as AddIcon } from "@mui/icons-material"
 
 const style = {
   position: 'absolute',
@@ -47,7 +48,7 @@ export function NewTaskModal() {
 
   return (
     <div>
-      <Button onClick={handleOpen} variant="contained" >Add a new task</Button>
+      <Button onClick={handleOpen} variant="contained" startIcon={<AddIcon/>} >Add a to-do item</Button>
       <Modal
         open={open}
         onClose={handleClose}
