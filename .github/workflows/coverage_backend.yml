@@ -1,0 +1,47 @@
+name: Lint, Format and Test Backend
+
+on: 
+  push
+
+jobs:
+  test:
+    name: Run tests and collect coverage on backend app
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+      
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+
+      - name: Install dependencies
+        working-directory: ./packages/api
+        run: poetry install
+      
+      - name: Install the code linting and formatting tool Ruff
+        working-directory: ./packages/api
+        run: pipx install ruff
+
+      - name: Lint code with Ruff
+        working-directory: ./packages/api
+        run: ruff check --output-format=github --target-version=py39
+
+      - name: Check code formatting with Ruff
+        working-directory: ./packages/api
+        run: ruff format --diff --target-version=py39
+        continue-on-error: true
+
+      - name: Run tests
+        working-directory: ./packages/api
+        run: poetry run pytest --cov-report xml --cov=api
+
+      - name: Upload results to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
