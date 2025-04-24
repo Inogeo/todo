@@ -55,7 +55,7 @@ def read_todo_item(todo_item_id: str, session: SessionDep = SessionDep) -> TodoI
 
 @router.delete("/{todo_item_id}")
 def delete_todo_item(todo_item_id: str, session: SessionDep = SessionDep) -> TodoItem:
-    """This API endopints retrive a single TodoItem instance."""
+    """This API endopints deletes a single TodoItem instance."""
     todo_item = session.get(TodoItem, todo_item_id)
     # If item not found, raise 404
     if not todo_item:

@@ -7,7 +7,8 @@ from .main import app
 from .database import get_session
 
 
-# In memory db used for tests
+# FIXTURE: used to overrride DB used for testing
+
 @pytest.fixture(name="session")
 def session_fixture():
     engine = create_engine(
@@ -16,7 +17,6 @@ def session_fixture():
     SQLModel.metadata.create_all(engine)
     with Session(engine) as session:
         yield session
-
 
 @pytest.fixture(name="client")
 def client_fixture(session: Session):
@@ -29,6 +29,7 @@ def client_fixture(session: Session):
     yield client
     app.dependency_overrides.clear()
 
+# TESTs
 
 def test_heathcheck(client: TestClient):
     """Test healthcheck endpoint."""

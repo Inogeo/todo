@@ -6,6 +6,7 @@ from sqlmodel.pool import StaticPool
 from api.main import app
 from api.database import get_session
 
+# FIXTURE: used to overrride DB used for testing
 
 # In memory db used for tests
 @pytest.fixture(name="session")
@@ -29,6 +30,8 @@ def client_fixture(session: Session):
     yield client
     app.dependency_overrides.clear()
 
+
+# TESTs: Used to test API endpoitns
 
 def test_create_todo(client: TestClient, session: Session):
     """Test create_todo API endpoint."""
